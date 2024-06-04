@@ -1,0 +1,4 @@
+/Users/jorgevelez/Desktop/marchingCubes/build/CMakeFiles/test_grid.dir
+/Users/jorgevelez/Desktop/marchingCubes/build/CMakeFiles/test.dir
+/Users/jorgevelez/Desktop/marchingCubes/build/CMakeFiles/edit_cache.dir
+/Users/jorgevelez/Desktop/marchingCubes/build/CMakeFiles/rebuild_cache.dir
