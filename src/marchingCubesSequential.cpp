@@ -68,8 +68,8 @@ void createSphere(Point *points, int girdSize, float radius, Point center) {
 }
 
 int main() {
-    const int gridSize = 20;
-    const float radius = 8.0f;
+    const int gridSize = 200;
+    const float radius = 80.0f;
     Point center = {gridSize / 2.0f, gridSize / 2.0f, gridSize / 2.0f};
 
     int numPoints = gridSize * gridSize * gridSize;
