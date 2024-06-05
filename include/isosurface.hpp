@@ -15,7 +15,6 @@ class Isosurface {
     void generateIsosurface(const Grid&, float isovalue,
                             std::vector<Triangle>& triangles);
 
-   private:
     // Method to interpolate between two vertices based on the isovalue
     Vertex interpolate(const Vertex& v1, const Vertex& v2,
                        float isovalue) const;
@@ -25,7 +24,7 @@ class Isosurface {
                      float isovalue, std::vector<Triangle>& triangles) const;
 
     // Method to caluculate the index in the edge table for a cube configuration
-    int calculateEdgeIndex(const Grid& grid, size_t x, size_t y, size_t z,
+    int calculateEdgeIndex(const std::array<Vertex, 8>& cubeVertices,
                            float isovalue) const;
 };
 

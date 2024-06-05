@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jorgevelez/Desktop/marchingCubes/src/grid.cpp" "CMakeFiles/test_grid.dir/src/grid.cpp.o" "gcc" "CMakeFiles/test_grid.dir/src/grid.cpp.o.d"
+  "/Users/jorgevelez/Desktop/marchingCubes/src/isosurface.cpp" "CMakeFiles/test_grid.dir/src/isosurface.cpp.o" "gcc" "CMakeFiles/test_grid.dir/src/isosurface.cpp.o.d"
   "/Users/jorgevelez/Desktop/marchingCubes/tests/test_grid.cpp" "CMakeFiles/test_grid.dir/tests/test_grid.cpp.o" "gcc" "CMakeFiles/test_grid.dir/tests/test_grid.cpp.o.d"
   )
 
