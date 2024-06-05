@@ -6,7 +6,7 @@
 #include "define.h"
 #include "types.hpp"
 
-#define EPISOLN 0.00001
+#define EPISOLN 0.00001;
 
 // Constructor
 Isosurface::Isosurface() {}
@@ -22,7 +22,7 @@ void Isosurface::generateIsosurface(const Grid& grid, float isovalue,
 
     // for each cube in the grid
     for (size_t x = 0; x < width - 1; x++) {
-        for (size_t y = 0; y < width - 1; y++) {
+        for (size_t y = 0; y < height - 1; y++) {
             for (size_t z = 0; z < depth - 1; z++) {
                 processCube(grid, x, y, z, isovalue, triangles);
             }
@@ -55,7 +55,7 @@ Vertex Isosurface::interpolate(const Vertex& v1, const Vertex& v2,
     Vertex v;
     v.position.x = v1.position.x + t * (v2.position.x - v1.position.x);
     v.position.y = v1.position.y + t * (v2.position.y - v1.position.y);
-    v.position.z = v1.position.z + t * (v2.position.z - v.position.z);
+    v.position.z = v1.position.z + t * (v2.position.z - v1.position.z);
     v.value = isovalue;
     return v;
 }
@@ -71,23 +71,25 @@ void Isosurface::processCube(const Grid& grid, size_t x, size_t y, size_t z,
     float z_float = static_cast<float>(z);
     ////////////////////////////////////////////
     // Get the values at the 8 corners of the cube
-    std::array<Vertex, 8> cubeVertices = {
-        Vertex{Point{x_float, y_float, z_float}, grid.getValue(x, y, z)},
-        Vertex{Point{x_float + 1, y_float, z_float},
-               grid.getValue(x + 1, y, z)},
-        Vertex{Point{x_float + 1, y_float + 1, z_float},
-               grid.getValue(x + 1, y + 1, z)},
-        Vertex{Point{x_float, y_float + 1, z_float},
-               grid.getValue(x, y + 1, z)},
-        Vertex{Point{x_float, y_float, z_float + 1},
-               grid.getValue(x, y, z + 1)},
-        Vertex{Point{x_float + 1, y_float, z_float + 1},
-               grid.getValue(x + 1, y, z + 1)},
-        Vertex{Point{x_float + 1, y_float + 1, z_float + 1},
-               grid.getValue(x + 1, y + 1, z + 1)},
-        Vertex{Point{x_float, y_float + 1, z_float + 1},
-               grid.getValue(x, y + 1, z + 1)},
-    };
+std::array<Vertex, 8> cubeVertices = {
+    // Vertex 0: Bottom-left-front corner of the cube
+    Vertex{Point{x_float, y_float, z_float}, grid.getValue(x, y, z)},
+    // Vertex 1: Bottom-right-front corner of the cube
+    Vertex{Point{x_float + 1, y_float, z_float}, grid.getValue(x + 1, y, z)},
+    // Vertex 2: Top-right-front corner of the cube
+    Vertex{Point{x_float + 1, y_float + 1, z_float}, grid.getValue(x + 1, y + 1, z)},
+    // Vertex 3: Top-left-front corner of the cube
+    Vertex{Point{x_float, y_float + 1, z_float}, grid.getValue(x, y + 1, z)},
+    // Vertex 4: Bottom-left-back corner of the cube
+    Vertex{Point{x_float, y_float, z_float + 1}, grid.getValue(x, y, z + 1)},
+    // Vertex 5: Bottom-right-back corner of the cube
+    Vertex{Point{x_float + 1, y_float, z_float + 1}, grid.getValue(x + 1, y, z + 1)},
+    // Vertex 6: Top-right-back corner of the cube
+    Vertex{Point{x_float + 1, y_float + 1, z_float + 1}, grid.getValue(x + 1, y + 1, z + 1)},
+    // Vertex 7: Top-left-back corner of the cube
+    Vertex{Point{x_float, y_float + 1, z_float + 1}, grid.getValue(x, y + 1, z + 1)},
+};
+
 
     //////////////////////////////////////////////////////////
     int edgeIndex = calculateEdgeIndex(cubeVertices, isovalue);
