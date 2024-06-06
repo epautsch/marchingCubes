@@ -31,3 +31,4 @@ const float *Grid::getRawData() const { return data_.data(); }
 size_t Grid::calculateIndex(size_t x, size_t y, size_t z) const {
     return x + width_ * (y + height_ * z);
 }
+
